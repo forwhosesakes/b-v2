@@ -6,7 +6,8 @@ import boto3
 
 INFER_DIR= "inference"
 s3 = boto3.resource('s3')
-s3Client = boto3.client("s3")
+s3Client = boto3.client("s3", region_name='eu-north-1',
+                  config=boto3.session.Config(signature_version='s3v4', s3={'signature_version': 's3v4', 'use_accelerate_endpoint': False}))
 client = Client("foryahasake/replica",download_files=INFER_DIR)
 logger = logging.getLogger(__name__)
     
