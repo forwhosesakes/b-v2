@@ -15,6 +15,12 @@ class ReportBaseSchema(BaseModel):
     categories: List[str]  = []
     createdAt:  Optional[datetime] = None
     updatedAt: Optional[datetime] = None
+    pollution_parameter : Optional[float]
+    severity:Optional[str] = None
+    status : Optional[str] = None
+    villa: Optional[float]
+    villa_style_loc :Optional[str] = None
+    neighbor: Optional[str]
 
     class Config:
         orm_mode = True
@@ -25,4 +31,5 @@ class ReportBaseSchema(BaseModel):
 class ListReportsResponse(BaseModel):
     status: str
     results: int
+    totalRecords:int
     reports: List[ReportBaseSchema]
